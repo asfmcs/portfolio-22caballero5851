@@ -1,0 +1,184 @@
+<html>
+<head>
+<title>Pac-man Maze</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/ec071a764d83f34910ba21fab0b0f0cc20293542/chs-js-lib/chs.js"></script>
+
+
+<style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Pac-man Maze</h1>
+
+
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+<pre id="console"></pre>
+
+<script>
+window.onload = function() {
+
+    function start() {
+    var pink = new Color(255,105,180);
+    drawBackgroundColor(0, 0);
+    drawMaze();
+    drawPacman(150,300);
+    drawGhost(100,220, Color.RED);
+    drawGhost(50,300, Color.CYAN);
+    drawGhost(330,250, pink);
+    drawGhost(200,355, Color.ORANGE);
+}
+
+function drawMaze(){
+    var outLine1 = new Line(10, 470, 390,470);
+    outLine1.setColor(Color.BLUE);
+    outLine1.setLineWidth(2);
+    add(outLine1);
+    
+    var outLine2 = new Line(10, 10, 390, 10);
+    outLine2.setColor(Color.BLUE);
+    outLine2.setLineWidth(2);
+    add(outLine2);
+    
+    var outLine3 = new Line(10, 470, 10, 10);
+    outLine3.setColor(Color.BLUE);
+    outLine3.setLineWidth(2);
+    add(outLine3);
+    
+    var outLine4 = new Line(390, 470, 390, 10);
+    outLine4.setColor(Color.BLUE);
+    outLine4.setLineWidth(2);
+    add(outLine4);
+    
+    var line1 = new Line(10, 400, 300, 400);
+    line1.setColor(Color.BLUE);
+    line1.setLineWidth(2);
+    add(line1);
+    
+    var line2 = new Line(390, 333, 100, 333);
+    line2.setColor(Color.BLUE);
+    line2.setLineWidth(2);
+    add(line2);
+    
+    var line3 = new Line(10, 266, 300, 266);
+    line3.setColor(Color.BLUE);
+    line3.setLineWidth(2);
+    add(line3);
+    
+    var line4 = new Line(390, 200, 100, 200);
+    line4.setColor(Color.BLUE);
+    line4.setLineWidth(2);
+    add(line4);
+    
+    var line5 = new Line(10, 133, 300, 133);
+    line5.setColor(Color.BLUE);
+    line5.setLineWidth(2);
+    add(line5);
+    
+    var line6 = new Line(390, 67, 100, 67);
+    line6.setColor(Color.BLUE);
+    line6.setLineWidth(2);
+    add(line6);
+}
+
+function drawGhost(centerX, centerY, color){
+    var bigCircle = new Circle(37.5/3);
+    bigCircle.setColor(color);
+    bigCircle.setPosition(centerX + 37.5/3, centerY);
+    add(bigCircle);
+    
+    var smallCenterCircle = new Circle(17/3);
+    smallCenterCircle.setColor(color);
+    smallCenterCircle.setPosition(centerX + 37.5/3, centerY + 100/3);
+    add(smallCenterCircle);
+    
+    var smallRightCircle = new Circle(17/3);
+    smallRightCircle.setColor(color);
+    smallRightCircle.setPosition(centerX + 20/3+ 37.5/3, centerY + 100/3);
+    add(smallRightCircle);
+    
+    var smallLeftCircle = new Circle(17/3);
+    smallLeftCircle.setColor(color);
+    smallLeftCircle.setPosition(centerX -20/3 + 37.5/3, centerY + 100/3);
+    add(smallLeftCircle);
+    
+    var rectangle = new Rectangle(75/3, 100/3);
+    rectangle.setColor(color);
+    rectangle.setPosition(centerX, centerY);
+    add(rectangle);
+    
+    var eyeRight = new Circle(17/3);
+    eyeRight.setColor(Color.WHITE);
+    eyeRight.setPosition(centerX + 15/3 + 37.5/3, centerY);
+    add(eyeRight);
+    
+    var pupilRight = new Circle(7/3);
+    pupilRight.setColor(Color.BLACK);
+    pupilRight.setPosition(centerX + 15/3 + 37.5/3, centerY);
+    add(pupilRight);
+    
+    var eyeLeft = new Circle(17/3);
+    eyeLeft.setColor(Color.WHITE);
+    eyeLeft.setPosition(centerX - 15/3 + 37.5/3, centerY);
+    add(eyeLeft);
+    
+    var pupilLeft = new Circle(7/3);
+    pupilLeft.setColor(Color.BLACK);
+    pupilLeft.setPosition(centerX - 15/3 + 37.5/3, centerY);
+    add(pupilLeft);
+}
+
+function drawPacman(centerX, centerY){
+    var pacCircle = new Circle(60/2);
+    pacCircle.setColor(Color.YELLOW);
+    pacCircle.setPosition(centerX,centerY);
+    add(pacCircle);
+    
+    var pacArc = new Arc(60/2, -20, 40, 0);
+    pacArc.setPosition(centerX, centerY);
+    pacArc.setColor(Color.BLACK);
+    add(pacArc);
+    
+    var pacEyes = new Circle(10/2);
+    pacEyes.setColor(Color.BLACK);
+    pacEyes.setPosition(centerX - 20/2, centerY - 25/2);
+    add(pacEyes);
+}
+
+function drawBackgroundColor(centerX, centerY){
+    var backgroundSquare = new Rectangle(500, 500);
+    backgroundSquare.setColor(Color.BLACK);
+    backgroundSquare.setPosition(centerX, centerY);
+    add(backgroundSquare);
+}
+
+
+    if (typeof start === 'function') {
+        start();
+    }
+};
+</script>
+
+</body>
+</html>
