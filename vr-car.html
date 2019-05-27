@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    </head>
+    <body>
+        <a-scene>
+        
+        <a-sky color="skyblue"></a-sky>
+        
+        <a-camera><a-cursor fuse="true" fusetimeout="1000"></a-cursor></a-camera>
+        
+        <a-plane rotation="-90 0 0" color="green" height="1000" width="1000"></a-plane>
+        
+        <a-plane color="black" position="0 0.01 0" rotation="-90 0 0" height="1000" width="5"></a-plane>
+        
+        <a-plane color="yellow" position="0 0.02 0" rotation="-90 0 0" height="1000" width="0.2"></a-plane>
+        
+        <a-box color="#A9A9A9" position="-3 0.02 0" depth="1000" height="0.5" width="1"></a-box>
+        
+        <a-box color="#A9A9A9" position="3 0.02 0" depth="1000" height="0.5" width="1"></a-box>
+        
+        <a-box color="gray" position="0.75 0.5 -3" height="1" width="1" depth="2">
+            <a-animation
+            attribute="position"
+            from="0.75 0.5 -3"
+            to="0.75 0.5 -50"
+            direction="alternate"
+            begin="click"
+            ></a-animation>
+        </a-box>
+    
+        </a-scene>
+    </body>
+</html>
